@@ -22,43 +22,13 @@
 
 ## 一次性配置方法（可直接贴给 AI）
 
-把下面这段 Prompt 整段复制给你的 AI 终端助手：
+复制这一句给 AI 即可（短链接版）：
 
 ```text
-请在我的终端里自动安装并配置 cdf-fzf-navigator，必须严格执行以下流程：
-
-仓库地址：
-https://github.com/qiunai/cdf-fzf-navigator
-
-步骤要求：
-1) 先检测我当前默认 shell：
-   - 读取 $SHELL，识别是 zsh 还是 bash
-   - 如果都不是，默认按 zsh 处理
-
-2) 检查 fzf 是否安装：
-   - 运行 command -v fzf
-   - 如果未安装，使用 brew install fzf 安装
-
-3) 克隆或更新项目到指定目录（固定使用这个目录）：
-   - TARGET_DIR="$HOME/.local/src/cdf-fzf-navigator"
-   - 如果目录不存在：git clone https://github.com/qiunai/cdf-fzf-navigator.git "$TARGET_DIR"
-   - 如果目录已存在：git -C "$TARGET_DIR" pull --ff-only
-
-4) 根据检测到的 shell 执行安装脚本：
-   - cd "$TARGET_DIR"
-   - bash install.sh --shell auto
-
-5) 让配置立即生效：
-   - 如果是 zsh：source ~/.zshrc
-   - 如果是 bash：source ~/.bashrc
-
-6) 最后做验证并把结果告诉我：
-   - Alt+C 能否打开目录树
-   - 右键是否进入子目录
-   - 左键是否返回父目录
-   - 回车是否一次确认并进入目录
-   - Esc/Ctrl+C 是否能退出
+Fetch and follow instructions from https://raw.githubusercontent.com/qiunai/cdf-fzf-navigator/refs/heads/main/.codex/INSTALL.md
 ```
+
+可选（更稳）：把链接换成固定 commit 的 raw 地址，避免后续文档变更影响安装行为。
 
 ## 详细安装步骤
 
@@ -109,6 +79,8 @@ source ~/.bashrc
 
 ```text
 cdf-fzf-navigator/
+├── .codex/
+│   └── INSTALL.md
 ├── assets/
 │   └── cover.svg
 ├── cdf.zsh
