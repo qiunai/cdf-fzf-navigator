@@ -28,7 +28,7 @@
 Fetch and follow instructions from https://raw.githubusercontent.com/qiunai/cdf-fzf-navigator/refs/heads/main/.codex/INSTALL.md
 ```
 
-可选（更稳）：把链接换成固定 commit 的 raw 地址，避免后续文档变更影响安装行为。
+这条链接可以长期不变；每次执行都会读取 `main` 分支最新安装说明，并把本地同步到最新安装程序。
 
 ## 详细安装步骤
 

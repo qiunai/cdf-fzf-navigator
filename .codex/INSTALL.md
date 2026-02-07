@@ -6,6 +6,7 @@ Follow these instructions exactly to install or update `cdf-fzf-navigator` for t
 
 - GitHub repo: `https://github.com/qiunai/cdf-fzf-navigator`
 - Clone path (fixed): `"$HOME/.local/src/cdf-fzf-navigator"`
+- This instruction link should stay unchanged and always track latest from `main`.
 
 ## Required behavior
 
@@ -19,11 +20,15 @@ Follow these instructions exactly to install or update `cdf-fzf-navigator` for t
    - If `fzf` is missing, run `brew install fzf`.
    - If `brew` is missing and `fzf` is missing, stop and report clearly.
 3. Clone or update repository:
-   - If `"$HOME/.local/src/cdf-fzf-navigator/.git"` exists, run:
-     - `git -C "$HOME/.local/src/cdf-fzf-navigator" pull --ff-only`
-   - Else:
-     - `mkdir -p "$HOME/.local/src"`
-     - `git clone https://github.com/qiunai/cdf-fzf-navigator.git "$HOME/.local/src/cdf-fzf-navigator"`
+   - Repo URL: `https://github.com/qiunai/cdf-fzf-navigator.git`
+   - Always sync target dir to latest `origin/main` (not just current local state):
+     - If `"$HOME/.local/src/cdf-fzf-navigator/.git"` exists and remote `origin` matches repo URL:
+       - `git -C "$HOME/.local/src/cdf-fzf-navigator" fetch origin main --prune`
+       - `git -C "$HOME/.local/src/cdf-fzf-navigator" checkout -B main origin/main`
+       - `git -C "$HOME/.local/src/cdf-fzf-navigator" reset --hard origin/main`
+       - `git -C "$HOME/.local/src/cdf-fzf-navigator" clean -fd`
+     - If target exists but is not this repo, move it aside with timestamp suffix, then clone fresh.
+     - If target does not exist, clone fresh.
 4. Run installer:
    - `cd "$HOME/.local/src/cdf-fzf-navigator"`
    - `bash install.sh --shell auto`
@@ -40,6 +45,7 @@ Follow these instructions exactly to install or update `cdf-fzf-navigator` for t
 ```bash
 set -euo pipefail
 
+REPO_URL="https://github.com/qiunai/cdf-fzf-navigator.git"
 TARGET_DIR="$HOME/.local/src/cdf-fzf-navigator"
 SHELL_NAME="$(basename "${SHELL:-}")"
 if [[ "$SHELL_NAME" != "zsh" && "$SHELL_NAME" != "bash" ]]; then
@@ -58,10 +64,20 @@ if ! command -v fzf >/dev/null 2>&1; then
 fi
 
 if [[ -d "$TARGET_DIR/.git" ]]; then
-  git -C "$TARGET_DIR" pull --ff-only
+  CURRENT_ORIGIN="$(git -C "$TARGET_DIR" remote get-url origin 2>/dev/null || true)"
+  if [[ "$CURRENT_ORIGIN" == "$REPO_URL" ]]; then
+    git -C "$TARGET_DIR" fetch origin main --prune
+    git -C "$TARGET_DIR" checkout -B main origin/main
+    git -C "$TARGET_DIR" reset --hard origin/main
+    git -C "$TARGET_DIR" clean -fd
+  else
+    mv "$TARGET_DIR" "${TARGET_DIR}.backup.$(date +%Y%m%d%H%M%S)"
+    mkdir -p "$(dirname "$TARGET_DIR")"
+    git clone "$REPO_URL" "$TARGET_DIR"
+  fi
 else
   mkdir -p "$(dirname "$TARGET_DIR")"
-  git clone https://github.com/qiunai/cdf-fzf-navigator.git "$TARGET_DIR"
+  git clone "$REPO_URL" "$TARGET_DIR"
 fi
 
 cd "$TARGET_DIR"
