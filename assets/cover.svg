@@ -1,0 +1,44 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">cdf-fzf-navigator preview</title>
+  <desc id="desc">A terminal-style preview showing directory navigation with left and right arrows and file-name preview.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1020"/>
+      <stop offset="100%" stop-color="#101a34"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#151f3a"/>
+      <stop offset="100%" stop-color="#0f172d"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="60" y="56" width="1080" height="518" rx="20" fill="url(#card)" stroke="#334155" stroke-width="2"/>
+
+  <circle cx="96" cy="88" r="7" fill="#fb7185"/>
+  <circle cx="120" cy="88" r="7" fill="#f59e0b"/>
+  <circle cx="144" cy="88" r="7" fill="#22c55e"/>
+
+  <text x="180" y="94" fill="#cbd5e1" font-family="Menlo,Consolas,monospace" font-size="20">cdf-fzf-navigator</text>
+  <text x="60" y="32" fill="#e2e8f0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="28" font-weight="700">Fast directory navigation for fzf</text>
+
+  <rect x="86" y="126" width="548" height="412" rx="12" fill="#0b1224" stroke="#243047" stroke-width="1.5"/>
+  <rect x="652" y="126" width="462" height="412" rx="12" fill="#0b1224" stroke="#243047" stroke-width="1.5"/>
+
+  <text x="106" y="155" fill="#93c5fd" font-family="Menlo,Consolas,monospace" font-size="17">cd: ~/workspace &gt;</text>
+  <text x="668" y="155" fill="#86efac" font-family="Menlo,Consolas,monospace" font-size="17">preview: selected directory</text>
+
+  <rect x="98" y="177" width="524" height="30" rx="6" fill="#1d4ed8" opacity="0.35"/>
+  <text x="108" y="198" fill="#dbeafe" font-family="Menlo,Consolas,monospace" font-size="16">[dir]  src</text>
+  <text x="108" y="232" fill="#cbd5e1" font-family="Menlo,Consolas,monospace" font-size="16">[dir]  docs</text>
+  <text x="108" y="266" fill="#cbd5e1" font-family="Menlo,Consolas,monospace" font-size="16">[dir]  scripts</text>
+  <text x="108" y="300" fill="#94a3b8" font-family="Menlo,Consolas,monospace" font-size="16">[hidden] .config</text>
+  <text x="108" y="334" fill="#94a3b8" font-family="Menlo,Consolas,monospace" font-size="16">[hidden] .cache</text>
+
+  <text x="668" y="198" fill="#cbd5e1" font-family="Menlo,Consolas,monospace" font-size="16">README.md</text>
+  <text x="668" y="232" fill="#cbd5e1" font-family="Menlo,Consolas,monospace" font-size="16">install.sh</text>
+  <text x="668" y="266" fill="#cbd5e1" font-family="Menlo,Consolas,monospace" font-size="16">cdf.zsh</text>
+  <text x="668" y="300" fill="#94a3b8" font-family="Menlo,Consolas,monospace" font-size="16">assets/cover.svg</text>
+
+  <text x="92" y="560" fill="#f8fafc" font-family="Menlo,Consolas,monospace" font-size="16">Keys: Right = enter child   Left = back to parent   Enter = cd now   Esc/Ctrl+C = close</text>
+</svg>
