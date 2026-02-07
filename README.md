@@ -1,5 +1,7 @@
 # cdf-fzf-navigator
 
+[**中文**](./README.md) | [English](./README.en.md)
+
 ![cdf-fzf-navigator cover](./assets/cover.svg)
 
 一个基于 `fzf` 的目录导航器：`Alt+C` 打开目录树，左右键前进/后退，回车一次确认并直接切换目录。
@@ -85,6 +87,7 @@ cdf-fzf-navigator/
 │   └── cover.svg
 ├── cdf.zsh
 ├── install.sh
+├── README.en.md
 ├── README.md
 └── LICENSE
 ```
